@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Create Your Profile</h1>
+    </header>
+    <main>
+        <form id="profileCreationForm" onsubmit="createProfile(event)">
+            <label for="regName">Name:</label>
+            <input type="text" id="regName" required>
+
+            <label for="regEmail">Email:</label>
+            <input type="email" id="regEmail" required>
+
+            <label for="regPhoneNumber">Phone Number:</label>
+            <input type="tel" id="regPhoneNumber" required>
+
+            <label for="regBloodGroup">Blood Group:</label>
+            <select id="regBloodGroup" required>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+            </select>
+
+            <label for="regAge">Age:</label>
+            <input type="number" id="regAge" required>
+
+            <label for="regWeight">Weight (kg):</label>
+            <input type="number" id="regWeight" required>
+
+            <label for="regPassword">Password:</label>
+            <input type="password" id="regPassword" required>
+
+            <button type="submit">Create Profile</button>
+        </form>
+        <div id="profileCreationError" class="error-message"></div>
+        <p>Already have a profile? <a href="index.html">Login here.</a></p>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

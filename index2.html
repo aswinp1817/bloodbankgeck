@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bank Initiative - Your Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Blood Bank Initiative</h1>
+        <nav>
+            <button class="tab-button" onclick="openTab('home')">Home</button>
+            <button class="tab-button" onclick="openTab('check-eligibility')">Check Eligibility</button>
+            <button class="tab-button" onclick="openTab('profile')">Your Profile</button>
+            <button class="tab-button" onclick="openTab('about-us')">About Us</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="tab-content active">
+            <h2>Welcome to the Blood Bank</h2>
+            <p>Join us in saving lives through blood donation!</p>
+            <div class="eligible-donors-list">
+                <h3>Eligible Donors by Blood Type</h3>
+                <select id="bloodGroupFilter" onchange="showEligibleDonors()">
+                    <option value="">Select Blood Group</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                </select>
+                <div id="eligibleDonors"></div> <!-- Updated to display names and phone numbers -->
+            </div>
+        </section>
+        
+
+        <section id="check-eligibility" class="tab-content">
+            <h2>Check Your Eligibility</h2>
+            <form id="eligibilityForm" onsubmit="checkEligibility(event)">
+                <label for="eligibilityAge">Age:</label>
+                <input type="number" id="eligibilityAge" required>
+
+                <label for="eligibilityWeight">Weight (kg):</label>
+                <input type="number" id="eligibilityWeight" required>
+
+                <label for="donatedBlood">Have you donated blood in the last 6 months?</label>
+                <input type="checkbox" id="donatedBlood" onchange="toggleLastDonationDate()">
+
+                <label for="lastDonationDate">Last Donation Date (if applicable):</label>
+                <input type="date" id="lastDonationDate" disabled>
+
+                <button type="submit">Check Eligibility</button>
+            </form>
+            <div id="eligibilityResult"></div>
+        </section>
+
+         <section id="profile" class="tab-content">
+            <h2>Your Profile</h2>
+
+            <!-- Profile Details Card -->
+            <div class="profile-card">
+                <p><strong>Name:</strong> <span id="profileName"></span></p>
+                <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+                <p><strong>Phone Number:</strong> <span id="profilePhoneNumber"></span></p>
+                <p><strong>Blood Group:</strong> <span id="profileBloodGroup"></span></p>
+                <p><strong>Admission Number:</strong> <span id="profileAdmissionNumber"></span></p>
+                <p><strong>Year of Passout:</strong> <span id="profileYearOfPassout"></span></p>
+                <p><strong>Stream of Study:</strong> <span id="profileStream"></span></p>
+                <p><strong>Age:</strong> <span id="profileAge"></span></p>
+                <p><strong>Weight:</strong> <span id="profileWeight"></span></p>
+            </div>
+
+            <!-- Last Donation Date with Date Picker -->
+            <div class="last-donation">
+                <label for="lastDonationDateUpdate">Last Donation Date:</label>
+                <input type="date" id="lastDonationDateUpdate">
+                <button onclick="updateLastDonationDate()">Update</button>
+            </div>
+
+            <br><button onclick="showEditForm()">Edit Profile</button>
+            <button onclick="logout()">Logout</button>
+            
+            <!-- Edit Profile Form -->
+            <!-- Edit Profile Form -->
+<div id="editProfileForm" style="display:none;">
+    <h3>Edit Profile</h3>
+    <form onsubmit="updateProfile(event)">
+        <label for="editName">Name:</label>
+        <input type="text" id="editName" required>
+
+        <label for="editEmail">Email:</label>
+        <input type="email" id="editEmail" required>
+
+        <label for="editPhoneNumber">Phone Number:</label>
+        <input type="tel" id="editPhoneNumber" required>
+
+        <label for="editBloodGroup">Blood Group:</label>
+        <select id="editBloodGroup" required>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+        </select>
+
+        <label for="editAdmissionNumber">Admission Number:</label>
+        <input type="text" id="editAdmissionNumber" required>
+
+        <label for="editYearOfPassout">Year of Passout:</label>
+        <select id="editYearOfPassout" required>
+            <!-- Add options for the years -->
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+            <option value="2026">2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+        </select>
+
+        <label for="editStream">Stream of Study:</label>
+        <select id="editStream" required>
+            <option value="CHEMICAL ENGINEERING">CHEMICAL ENGINEERING</option>
+            <option value="APPLIED ELECTRONICS AND INSTRUMENTATION ENGINEERING">APPLIED ELECTRONICS AND INSTRUMENTATION ENGINEERING</option>
+            <option value="MECHANICAL ENGINEERING">MECHANICAL ENGINEERING</option>
+            <option value="CIVIL ENGINEERING">CIVIL ENGINEERING</option>
+            <option value="ELECTRONICS AND COMMUNICATION ENGINEERING">ELECTRONICS AND COMMUNICATION ENGINEERING</option>
+            <option value="COMPUTER SCIENCE AND DESIGN ENGINEERING">COMPUTER SCIENCE AND DESIGN ENGINEERING</option>
+        </select>
+
+        <label for="editAge">Age:</label>
+        <input type="number" id="editAge" required>
+
+        <label for="editWeight">Weight (kg):</label>
+        <input type="number" id="editWeight" required>
+
+        <button type="submit">Update Profile</button>
+    </form>
+</div>
+        </section>
+
+        <section id="about-us" class="tab-content">
+            <h2>About Us</h2>
+            <p>Learn more about our blood donation initiative and how you can contribute.</p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

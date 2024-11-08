@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bank Initiative - Register</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Blood Bank Initiative</h1>
+    </header>
+
+    <main>
+        <section id="registration">
+            <h2>Create Profile</h2>
+            <form onsubmit="createProfile(event)">
+                <label for="regName">Name:</label>
+                <input type="text" id="regName" required>
+
+                <label for="regEmail">Email:</label>
+                <input type="email" id="regEmail" required>
+
+                <label for="regPhoneNumber">Phone Number:</label>
+                <input type="tel" id="regPhoneNumber" required>
+
+                <label for="regBloodGroup">Blood Group:</label>
+                <select id="regBloodGroup" required>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                </select>
+
+                <label for="regAdmissionNumber">Admission Number:</label>
+                <input type="text" id="regAdmissionNumber" required>
+
+                <label for="yearOfPassout">Year of Passout:</label>
+                <select id="yearOfPassout" name="yearOfPassout" required>
+                    <option value="">Select Year</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                </select>
+
+                <!-- Department dropdown -->
+            <label for="regStream">Stream of Study:</label>
+            <select id="regStream" name="regStream" required>
+                <option value="CHEMICAL ENGINEERING">CHEMICAL ENGINEERING</option>
+                <option value="APPLIED ELECTRONICS AND INSTRUMENTATION ENGINEERING">APPLIED ELECTRONICS AND INSTRUMENTATION ENGINEERING</option>
+                <option value="MECHANICAL ENGINEERING">MECHANICAL ENGINEERING</option>
+                <option value="CIVIL ENGINEERING">CIVIL ENGINEERING</option>
+                <option value="ELECTRONICS AND COMMUNICATION ENGINEERING">ELECTRONICS AND COMMUNICATION ENGINEERING</option>
+                <option value="COMPUTER SCIENCE AND DESIGN ENGINEERING">COMPUTER SCIENCE AND DESIGN ENGINEERING</option>
+            </select>
+
+                <label for="regAge">Age:</label>
+                <input type="number" id="regAge" required>
+
+                <label for="regWeight">Weight (kg):</label>
+                <input type="number" id="regWeight" required>
+
+                <label for="regPassword">Password:</label>
+                <input type="password" id="regPassword" required>
+
+                <button type="submit">Create Profile</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
